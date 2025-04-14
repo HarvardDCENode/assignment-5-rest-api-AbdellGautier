@@ -3,8 +3,6 @@
 // wrap in IIFE to control scope
 (function () {
 
-    const baseURL = ''; //  for development, it's http://localhost:3030
-
     async function testAPIs() {
         // test list first
         let testId = '';
@@ -17,24 +15,26 @@
 
             // If you don't have a file upload component to your application, a simple JSON object will do
             let data = {
-                "title": "My API Test Title",
-                "description": "This is an AJAX API test"
+                "title": "RestAPI Test Event",
+                "description": "This is an AJAX API test for an event record.",
+                "date": "2025-12-30T12:00:00.000Z"
             }
 
             // create
             let newevent = await callAPI('POST', '/api/events', null, data)
             eventId = newevent._id;
             console.log('\n\n***************\ncreate results:');
+            console.log(newevent._id);
             console.log(newevent);
 
             // find
-            let retreivedNewevent = await callAPI('GET', '/api/events/' + newevent._id, null, null)
+            let retrievedNewevent = await callAPI('GET', '/api/events/' + newevent._id, null, null)
             console.log('\n\n**************\nfind results:');
-            console.log(retreivedNewevent);
+            console.log(retrievedNewevent);
 
             // update description
-            retreivedNewevent.description += ' appended by the AJAX API ';
-            let updatedevent = await callAPI('PUT', '/api/events/' + retreivedNewevent._id, null, retreivedNewevent)
+            retrievedNewevent.description += ' appended by the AJAX API ';
+            let updatedevent = await callAPI('PUT', '/api/events/' + retrievedNewevent._id, null, retrievedNewevent)
             console.log('\n\n*************\nupdate results:');
             console.log(updatedevent);
 
@@ -43,7 +43,7 @@
             console.log('\n\n*************\nfind results (should contain updated description field):');
             console.log(retreivedUpdatedevent);
 
-            //delete
+            // delete
             let deletedevent = await callAPI('DELETE', '/api/events/' + retreivedUpdatedevent._id, null, null)
             console.log(deletedevent);
 
@@ -69,9 +69,9 @@
              *      on the object. (an empty 'body' property will cause an error
              *      on a GET request!)
              */
-            const response = await fetch(baseURL + uri, {
+            const response = await fetch(uri, {
                 method: method, // GET, POST, PUT, DELETE, etc.
-                ...(method == 'POST' ? { body: body } : {}),
+                ...(method == 'POST' ? { headers: jsonMimeType, body: JSON.stringify(body) } : {}),
                 ...(method == 'PUT' ? { headers: jsonMimeType, body: JSON.stringify(body) } : {})
             });
             // response.json() parses the textual JSON data to a JSON object. 
@@ -83,7 +83,6 @@
             return "{'status':'error'}";
         }
     }
-
 
     // Calls our test function when we click the button
     //  afer validating that there's a file selected.

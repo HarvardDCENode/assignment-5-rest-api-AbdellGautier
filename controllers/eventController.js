@@ -41,4 +41,4 @@ class EventService {
     }
 }
 
-module.exports.eventService = EventService;
+module.exports.EventService = EventService;

@@ -34,7 +34,7 @@ router.get('/:eventid', (req, res, next) => {
     console.log(`finding ${req.params.eventid}`);
     EventService.read(req.params.eventid)
         .then((event) => {
-            console.log(`Found images: ${event}`);
+            console.log(`Found the event: ${event}`);
             res.status(200);
             res.send(JSON.stringify(event));
         }).catch((err) => {
@@ -57,18 +57,20 @@ router.put('/:eventid', (req, res, next) => {
         });
 });
 
-// this example with no file upload - image is passed in as a url
+// create
 router.post('/', async (req, res, next) => {
 
     const event = {
         title: req.body.title,
-        description: req.body.description
+        description: req.body.description,
+        date: req.body.date
     }
 
     try {
+        console.log(event);
         const eventSave = await EventService.create(event);
         res.status(201);
-        res.send(JSON.stringify(event));
+        res.send(JSON.stringify(eventSave));
     } catch (err) {
         console.log(err);
         throw new Error("EventSaveError", event);
