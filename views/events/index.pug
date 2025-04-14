@@ -1,0 +1,24 @@
+html
+head
+  title Your Events Manager!
+  style 
+    include ../../public/css/index.css
+body
+  h1 Events Manager : List of Events
+
+  <br>
+    form(action="/events/add", method="get")
+      button(type="submit") + Add New Event
+  
+    each event in events
+      div.card(class = event.date > new Date() ? "card-event-future": "card-event-past")
+        div(class="card-event-left")
+          h3 #{event.title}
+          p #{event.description}
+          p #{'Date: ' + event.date.toLocaleDateString()}
+        div(class="card-event-right")
+          form(action="/events/edit/" + event.id, method="get")
+            button(type="submit", class="cmd-edit") Edit
+          form(action="/events/delete", method="post")
+            input(type="hidden" name="eventId" id="eventid" value=event.id)
+            button(type="submit", class="cmd-delete", onclick="return confirm('Are you sure?');") Delete

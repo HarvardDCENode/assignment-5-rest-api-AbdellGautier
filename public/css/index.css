@@ -1,0 +1,145 @@
+body {
+    background-color: #f5f4f1;
+    /* Dark purple background */
+    font-family: Arial, sans-serif;
+    color: #343434;
+    text-align: center;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #b30838;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin: 20px;
+}
+
+hr {
+    border: 1px dotted #b1863d;
+}
+
+/* Form styles */
+
+label {
+    display: block;
+    font-size: 1.2em;
+    color: #b30838;
+    margin-bottom: 10px;
+}
+
+select,
+input[type="number"],
+input[type="text"],
+input[type="date"],
+textarea {
+    padding: 10px;
+    font-size: 1.2em;
+    border: 2px solid #cccccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #b1863d;
+    color: white;
+    padding: 10px 10px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #c49c58;
+}
+
+.cmd-cancel {
+    background-color: #4c4c4c;
+    color: white;
+    padding: 10px 10px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cmd-cancel:hover {
+    background-color: #575757;
+}
+
+.cmd-edit {
+    background-color: #b1863d;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.cmd-delete {
+    background-color: #d62020;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.cmd-delete:hover {
+    background-color: #ec3e3e;
+}
+
+/* Event cards styles */
+
+.card-event-future {
+    display: flex;
+    text-align: left;
+    background-color: #ffffff;
+    border: 2px solid #b30838;
+    border-radius: 8px;
+    padding: 0px 10px 0px 10px;
+    margin: 10px auto;
+    width: 80%;
+    max-width: 600px;
+}
+
+.card-event-future h3 {
+    color: #b30838;
+}
+
+.card-event-past {
+    opacity: 0.6;
+    display: flex;
+    text-align: left;
+    background-color: #ffffff;
+    border: 2px solid #943751;
+    border-radius: 8px;
+    padding: 0px 10px 0px 10px;
+    margin: 10px auto;
+    width: 80%;
+    max-width: 600px;
+}
+
+.card-event-past h3 {
+    color: #87364d;
+}
+
+.card-event-left {
+    float: left;
+    width: 75%;
+    padding: 10px;
+}
+
+.card-event-right {
+    float: right;
+    width: 25%;
+    padding: 10px;
+}

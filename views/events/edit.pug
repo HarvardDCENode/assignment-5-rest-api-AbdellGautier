@@ -1,0 +1,26 @@
+html
+head
+  title Your Events Manager!
+  style 
+    include ../../public/css/index.css
+body
+  h1 Edit Event
+  <br>
+  
+  form(action="/events/update", method="post")
+    input(type="hidden", name="eventId", id="eventId", value=event.id)
+
+    h2 Information of Your Event
+    div(class="form-group")
+      label(for="title") Title:
+      input(type="text", name="title", placeholder="Your event title", style="width: 700px", value=event.title, required)
+      label(for="description") Description:
+      textarea#description(name="description", placeholder="Your event description", rows="5", cols="74", required)=event.description
+    div(class="form-group")
+      label(for="date") Date:
+      input(type="date", name="date", max="2030-12-31", value=eventDate, required)
+      <br>
+      <br>
+      button(type="submit") Save Changes
+  form(action="/events/", method="get")
+      button(type="submit", class="cmd-cancel") Cancel and view the list of events

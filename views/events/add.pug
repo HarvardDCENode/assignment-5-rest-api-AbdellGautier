@@ -1,0 +1,24 @@
+html
+head
+  title Your Events Manager!
+  style 
+    include ../../public/css/index.css
+body
+  h1 Add an Event to the List!
+  <br>
+  
+  form(action="/events/add", method="post")
+    h2 Information of Your Event
+    div(class="form-group")
+      label(for="title") Title:
+      input(type="text", name="title", placeholder="Your event title", style="width: 700px", required)
+      label(for="description") Description:
+      textarea#description(name="description", placeholder="Your event description", rows="5", cols="74", required)
+    div(class="form-group")
+      label(for="date") Date:
+      input(type="date", name="date", value="2025-04-01", min="2025-04-01", max="2030-12-31", required)
+      <br>
+      <br>
+      button(type="submit") Save New Event
+  form(action="/events", method="get")
+      button(type="submit", class="cmd-cancel") Cancel and view the list of events
